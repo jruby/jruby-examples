@@ -16,6 +16,8 @@ bar = Bar.new
 puts bar.say
 puts bar.shout
 
+puts bar.add(4, 4)
+
 ##
 # Using a module defined in the extensione.
 # Foo is a module defined in jruby extension point.
