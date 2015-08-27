@@ -22,4 +22,11 @@ public class RubyFoo extends RubyObject {
         Ruby runtime = context.runtime;
         return runtime.newString("This is a new String");
     }
+
+    @JRubyMethod( module = true )
+    public static IRubyObject default_options(ThreadContext context, IRubyObject self) {
+        RubyHash options = new RubyHash(context.runtime);
+        options.put("hostname", "example.org");
+        return options;
+     }
 }
