@@ -19,14 +19,14 @@ public class BasicService  implements BasicLibraryService {
     public boolean basicLoad(final Ruby ruby) throws IOException {
 
         RubyModule foo = ruby.defineModule("Foo");
-        foo.defineAnnotatedMethods(Foo.class);
+        foo.defineAnnotatedMethods(RubyFoo.class);
 
         RubyClass bar = ruby.defineClass("Bar", ruby.getObject(), new ObjectAllocator() {
              public IRubyObject allocate(Ruby ruby, RubyClass rubyClass) {
-                return new Bar(ruby, rubyClass);
+                return new RubyBar(ruby, rubyClass);
             }
         });
-        bar.defineAnnotatedMethods(Bar.class);
+        bar.defineAnnotatedMethods(RubyBar.class);
 
         return true;
     }

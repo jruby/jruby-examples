@@ -7,13 +7,13 @@ import org.jruby.runtime.ThreadContext;
 import org.jruby.runtime.builtin.IRubyObject;
 
 /**
- * A basic module named Foo
+ * A basic module named RubyFoo
  * Created by purbon on 24/08/15.
  */
 @JRubyModule( name = "Foo")
-public class Foo extends RubyObject {
+public class RubyFoo extends RubyObject {
 
-    public Foo(Ruby ruby, RubyClass metaclass) {
+    public RubyFoo(Ruby ruby, RubyClass metaclass) {
         super(ruby, metaclass);
     }
 

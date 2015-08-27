@@ -12,9 +12,9 @@ import org.jruby.runtime.builtin.IRubyObject;
  */
 
 @JRubyClass(name = "Bar")
-public class Bar extends RubyObject {
+public class RubyBar extends RubyObject {
 
-    public Bar(Ruby ruby, RubyClass metaclass) {
+    public RubyBar(Ruby ruby, RubyClass metaclass) {
         super(ruby, metaclass);
     }
 
