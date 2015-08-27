@@ -1,8 +1,15 @@
 require "java"
-$CLASSPATH << File.join(File.dirname(__FILE__),  "jruby-ext", "target", "classes")
+$CLASSPATH << File.join(File.dirname(__FILE__), "..", "jruby-ext", "target", "classes")
 
 require "com/purbon/basic"
 
+
+return if $0 != __FILE__
+
+##
+# If executed directly this class runs a few methods comming out of the extensions
+# defined in this project.
+##
 
 ##
 # Using a class created in the jruby side, this class has for example a method with aliases, etc.
