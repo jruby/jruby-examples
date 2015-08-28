@@ -7,7 +7,7 @@ import org.jruby.runtime.ThreadContext;
 import org.jruby.runtime.builtin.IRubyObject;
 
 /**
- * A basic module named RubyFoo, created for learning purposes
+ * A basic module named RubyFoo, created for learning purposes.
  * Created by purbon on 24/08/15.
  */
 @JRubyModule( name = "Foo")
@@ -20,6 +20,13 @@ public class RubyFoo extends RubyObject {
     /**
      * Extension method with two names (aliases) that return an string). This is
      * an static method.
+     * This module would be the equivalent of in ruby:
+     *   module Foo
+     *     def self.build_string
+     *        return "This is a new String"
+     *     end
+     *     alias_method :build_string :new_string
+     *   end
      * @param context The ThreadContext of the execution. (required)
      * @param self A reference to self, aka like this in java but in ruby. (required)
      * @return A RubyString.
@@ -33,6 +40,12 @@ public class RubyFoo extends RubyObject {
     /**
      * Extension method that add two numbers. ( NOTE: keep in mind we're in ruby, so
      * parameters should be IRubyObjects, not directly numbers )
+     * This module would be the equivalent of in ruby:
+     *   module Foo
+     *     def add(a,b)
+     *       return a+b
+     *     end
+     *   end
      * @param context The ThreadContext in the execution.
      * @param a A ruby object
      * @param b A ruby object

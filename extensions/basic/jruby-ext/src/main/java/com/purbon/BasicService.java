@@ -11,7 +11,7 @@ import java.io.IOException;
 
 /**
  * This class is used to load all related modules in a lib (metaphor in the extensions mechanism).
- * Everything defined in the load method would be instantiated when teh ruby code does the require
+ * Everything defined in the load method would be instantiated when the ruby code does the require
  * poiting to this service. (Example require "com/purbon/basic")
  * Created by purbon on 24/08/15.
  */

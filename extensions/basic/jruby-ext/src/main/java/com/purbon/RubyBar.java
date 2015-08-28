@@ -7,7 +7,7 @@ import org.jruby.runtime.ThreadContext;
 import org.jruby.runtime.builtin.IRubyObject;
 
 /**
- * A basic class created for learning purposes
+ * A basic class created for learning purposes.
  * Created by purbon on 24/08/15.
  */
 
@@ -21,6 +21,15 @@ public class RubyBar extends RubyObject {
     /**
      * Extension method with two names (aliases) that return a Hello World string). This is
      * an static method.
+     * This would be equivalent to the ruby:
+     *    class Bar
+     *       class << self
+     *          def shout()
+     *            return "Hello World!"
+     *          end
+     *          alias_method :shout, :say
+     *       end
+     *     end
      * @param context The ThreadContext of the execution. (required)
      * @param self A reference to self, aka like this in java but in ruby. (required)
      * @return A Hello World! RubyString.
@@ -34,7 +43,13 @@ public class RubyBar extends RubyObject {
 
     /**
      * Extension method that add two numbers. ( NOTE: keep in mind we're in ruby, so
-     * parameters should be IRubyObjects, not directly numbers )
+     * parameters should be IRubyObjects, not directly numbers ).
+     * This would be equivalent to the ruby:
+     *    class Bar
+     *      def add(a,b)
+     *        return a+b
+     *      end
+     *    end
      * @param context The ThreadContext in the execution.
      * @param a A ruby object
      * @param b A ruby object
