@@ -1,39 +1,40 @@
 require "spec_helper"
 
 ##
-# Describe behaviour created in the JRuby Exception
-# Class named Bar. This class include common basic
-# things you can do with Classes as in JRuby Extensions
-# mecanism.
+# Describe behaviour created in the JRuby extension
+# class named Bar. This class include common basic
+# things you can do in the JRuby extension mechanism.
 ##
 describe Bar do
 
-  context "simple methods" do
+  context "simple class methods" do
     it 'shout return an string' do
-      expect(subject.shout).to eq("Hello World!");
+      expect(Bar.shout).to eq("Hello World!");
     end
 
     it 'say return an string' do
-      expect(subject.say).to eq("Hello World!");
+      expect(Bar.say).to eq("Hello World!");
     end
   end
 
-  context "aritmetic operations" do
+  context "simple instance methods (aritmetic ops)" do
+
+    subject(:bar) { Bar.new }
 
     it "add two numbers" do
-      expect(subject.add(3, 2)).to eq(5)
+      expect(bar.add(3, 2)).to eq(5)
     end
 
     it "substract two numbers" do
-      expect(subject.sub(3, 2)).to eq(1)
+      expect(bar.sub(3, 2)).to eq(1)
     end
 
     it "divide two numbers" do
-      expect(subject.div(4, 2)).to eq(2)
+      expect(bar.div(4, 2)).to eq(2)
     end
 
     it "multiply two numbers" do
-      expect(subject.plus(4, 2)).to eq(8)
+      expect(bar.plus(4, 2)).to eq(8)
     end
 
   end
