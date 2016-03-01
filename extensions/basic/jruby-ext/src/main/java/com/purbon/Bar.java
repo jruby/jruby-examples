@@ -1,13 +1,16 @@
 package com.purbon;
 
-import org.jruby.*;
+import org.jruby.Ruby;
+import org.jruby.RubyClass;
+import org.jruby.RubyObject;
+import org.jruby.RubyString;
 import org.jruby.anno.JRubyClass;
 import org.jruby.anno.JRubyMethod;
 import org.jruby.runtime.ThreadContext;
 import org.jruby.runtime.builtin.IRubyObject;
 
 /**
- * A basic class created for learning purpouses
+ * A basic class created for learning purposes
  * Created by purbon on 24/08/15.
  */
 

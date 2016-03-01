@@ -6,3 +6,13 @@ This project aims to demo small and easy concepts around jruby extensions, this 
 * Static methods in both elements
 * Loading the extensions
 * ...
+
+### Polyglot maven build
+
+```bash
+mvn # builds basic.jar
+```
+
+```bash
+mvn javadoc:javadoc # javadoc
+```
