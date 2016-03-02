@@ -26,7 +26,7 @@ project 'jruby-ext' do
     'source.directory' => 'src/main/java', # poxy Eclipse folders
     'project.build.sourceEncoding' => 'utf-8',
     'polyglot.dump.pom' => 'pom.xml',
-    'jruby.api' => 'http://jruby.org/apidocs/'
+    'jruby.api' => 'http://jruby.org/apidocs/',
   )
 
   jar 'org.jruby:jruby:9.0.5.0'
@@ -36,25 +36,25 @@ project 'jruby-ext' do
     plugin :dependency, '2.8'
     plugin(
       :compiler, '3.3',
-      'source' =>  '${maven.compiler.source}',
-      'target' =>  '${maven.compiler.target}'
+      source: '${maven.compiler.source}',
+      target: '${maven.compiler.target}'
     )
     plugin(
       :javadoc, '2.10.3',
-      'detectOfflineLinks' => 'false',
-      'links' => ['${jruby.api}']
+      detect_offline_links: 'false',
+      links: ['${jruby.api}']
     )
     plugin(
-      :jar, '2.6'      
-      # 'archive' => {
-      #   'manifestFile' => 'MANIFEST.MF'
-      # }
+      :jar, '2.6',      
+      archive: {
+        manifestFile: 'MANIFEST.MF' # camel case reqd
+      }    
     )
   end
   
   build do
     default_goal 'package'
     source_directory '${source.directory}'
-    final_name 'basic'
+    final_name 'jruby-ext'
   end
 end
