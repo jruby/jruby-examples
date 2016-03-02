@@ -1,7 +1,6 @@
-require "java"
-$CLASSPATH << File.join(File.dirname(__FILE__), "..", "jruby-ext", "target", "classes")
-
-require "com/purbon/basic"
+require 'java'
+require_relative 'jruby-ext.jar'
+com.purbon.BasicService.new.basicLoad(JRuby.runtime)
 
 
 return if $0 != __FILE__

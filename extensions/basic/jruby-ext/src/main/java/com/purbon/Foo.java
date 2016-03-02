@@ -1,6 +1,9 @@
 package com.purbon;
 
-import org.jruby.*;
+import org.jruby.Ruby;
+import org.jruby.RubyClass;
+import org.jruby.RubyObject;
+import org.jruby.RubyString;
 import org.jruby.anno.JRubyMethod;
 import org.jruby.anno.JRubyModule;
 import org.jruby.runtime.ThreadContext;
