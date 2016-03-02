@@ -9,7 +9,7 @@ def create_manifest
   end
 end
 
-task default: [:init, :compile]
+task default: [:init, :compile, :test]
 
 desc 'Create Manifest'
 task :init do
@@ -20,6 +20,11 @@ desc 'Compile'
 task :compile do
   sh 'mvn package'
   sh 'mv target/jruby-ext.jar ../lib'
+end
+
+desc 'Test'
+task :test do
+  sh 'jruby ../test/basic_test.rb'
 end
 
 desc 'clean'
