@@ -11,7 +11,7 @@ import java.io.IOException;
 
 /**
  * This class is used when to run the instantiation and load
- * of all the related modules and classes defined here.
+ * of all the related modules and classes are defined here.
  * Created by purbon on 24/08/15.
  */
 public class BasicService  implements BasicLibraryService {

@@ -21,28 +21,28 @@ public class Bar extends RubyObject {
         super(ruby, metaclass);
     }
 
-    @JRubyMethod(module = true, name = {"shout", "say"})
-    public static RubyString shout(ThreadContext context, IRubyObject self) {
+    @JRubyMethod(name = {"shout", "say"})
+    public IRubyObject shout_ruby(ThreadContext context) {
          return context.runtime.newString("Hello World!");
     }
 
-    @JRubyMethod(module = true, name = "add")
-    public IRubyObject add(ThreadContext context, IRubyObject a, IRubyObject b) {
+    @JRubyMethod(name = "add")
+    public IRubyObject add_ruby(ThreadContext context, IRubyObject a, IRubyObject b) {
         return a.callMethod(context, "+", b);
     }
 
-    @JRubyMethod(module = true, name = "sub")
-    public IRubyObject sub(ThreadContext context, IRubyObject a, IRubyObject b) {
+    @JRubyMethod(name = "subtract")
+    public IRubyObject sub_ruby(ThreadContext context, IRubyObject a, IRubyObject b) {
         return a.callMethod(context, "-", b);
     }
 
-    @JRubyMethod(module = true, name = "div")
+    @JRubyMethod(name = "divide")
     public IRubyObject div(ThreadContext context, IRubyObject a, IRubyObject b) {
         return a.callMethod(context, "/", b);
     }
 
-    @JRubyMethod(module = true, name = "plus")
-    public IRubyObject plus(ThreadContext context, IRubyObject a, IRubyObject b) {
+    @JRubyMethod(name = "multiply")
+    public IRubyObject mult(ThreadContext context, IRubyObject a, IRubyObject b) {
         return a.callMethod(context, "*", b);
     }
 
