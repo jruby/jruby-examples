@@ -1,29 +1,18 @@
 package com.purbon;
 
 import org.jruby.Ruby;
-import org.jruby.RubyClass;
-import org.jruby.RubyHash;
-import org.jruby.RubyObject;
-import org.jruby.RubyString;
 import org.jruby.anno.JRubyMethod;
+import org.jruby.runtime.builtin.IRubyObject;
 import org.jruby.anno.JRubyModule;
 import org.jruby.runtime.ThreadContext;
-import org.jruby.runtime.builtin.IRubyObject;
+
 
 /**
- * A basic module named Foo Created by purbon on 24/08/15.
+ * A basic example module, purely for demonstration purposes.
+ * See {https://github.com/jruby/jruby/wiki/JRubyMethod_Signatures}
  */
 @JRubyModule(name = "Foo")
-public class RubyFoo extends RubyObject {
-
-    /**
-     *
-     * @param ruby
-     * @param metaclass
-     */
-    public RubyFoo(Ruby ruby, RubyClass metaclass) {
-        super(ruby, metaclass);
-    }
+public class RubyFoo {
 
     /**
      * Example ruby aliases that return a string. This is a kind of pointless
@@ -34,43 +23,33 @@ public class RubyFoo extends RubyObject {
      *   end alias_method :build_string :new_string
      * end
      *
-     * @param context The ThreadContext of the execution. (required)
-     * @param self A reference to self (required)
+     * @param context ThreadContext
+     * @param recv the receiver
      * @return A RubyString.
      */
-    @JRubyMethod(module = true, name = {"build_string", "new_string"})
-    public static RubyString buildString(ThreadContext context, IRubyObject self) {
-        Ruby runtime = context.runtime;
+    @JRubyMethod(name = {"build_string", "new_string"}, module = true)
+    public static IRubyObject buildString(ThreadContext context, IRubyObject recv) {
+        Ruby runtime = context.getRuntime();
         return runtime.newString("This is a new String");
     }
 
-    /**
-     * A ruby method that adds two numbers. In practice we would do some operation
-     * in java possibly using a library method, or a method of our own creation.
-     * @param context The ThreadContext in the execution.
-     * @param a A ruby object
-     * @param b A ruby object
-     * @return The outcome of doing a plus b.
-     */
-    @JRubyMethod(module = true, name = "add")
-    public IRubyObject add(ThreadContext context, IRubyObject a, IRubyObject b) {
-        // This is another example of method call, where we use call as if we
-        // where actually in Ruby, (ex: a + b).
-        return a.callMethod(context, "+", b);
-    }
 
     /**
-     * Extension method binding with a static method, this method does not use
-     * name so it takes the name from the extension method.
-     *
-     * @param context The ThreadContext of the extension. (required)
-     * @param self A reference to self (required)
-     * @return A RubyHash with the default options.
+     * A ruby method that adds two numbers. In practice we would do some more 
+     * complex operation in java possibly using a library method, or a pure java
+     * method of our own creation (possible private).
+     * @param context ThreadContext
+     * @param recv the receiver
+     * @param args array of input arguments
+     * @return The outcome of doing a plus b.
      */
-    @JRubyMethod(module = true)
-    public static IRubyObject default_options(ThreadContext context, IRubyObject self) {
-        RubyHash options = new RubyHash(context.runtime);
-        options.put("hostname", "example.org");
-        return options;
+    @JRubyMethod(name = "add", module = true, rest = true)
+    public static IRubyObject add(ThreadContext context, IRubyObject recv, IRubyObject[] args) {
+        Ruby runtime = context.getRuntime();
+        // Arity.checkArgumentCount(runtime, args, Arity.OPTIONAL.getValue(), 2);
+        int a = (int) args[0].toJava(Integer.class);
+        int b = (int) args[1].toJava(Integer.class);
+        int result = a + b;
+        return runtime.newFixnum(result);
     }
 }

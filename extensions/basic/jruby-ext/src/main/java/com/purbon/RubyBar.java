@@ -16,11 +16,13 @@ import org.jruby.runtime.builtin.IRubyObject;
 
 @JRubyClass(name = "Bar")
 public class RubyBar extends RubyObject {
+    // A suggested inclusion in a java serializable class (like RubyObject)
+    private static final long serialVersionUID = -2487716565993200242L;
 
     /**
      * Java constructor
-     * @param ruby
-     * @param metaclass
+     * @param ruby Ruby
+     * @param metaclass RubyClass
      */
     public RubyBar(Ruby ruby, RubyClass metaclass) {
         super(ruby, metaclass);
@@ -40,10 +42,10 @@ public class RubyBar extends RubyObject {
     /**
      * Adds two numbers (in practice you would implement some method in java, 
      * probably using an external library)
-     * @param context
-     * @param a
-     * @param b
-     * @return
+     * @param context ThreadContext
+     * @param a probably expect RubyFixnum
+     * @param b probably expect RubyFixnum
+     * @return result probably RubyFixnum
      */
     @JRubyMethod(name = "add")
     public IRubyObject add_ruby(ThreadContext context, IRubyObject a, IRubyObject b) {
@@ -53,10 +55,10 @@ public class RubyBar extends RubyObject {
     /**
      * Subtract two numbers (in practice you would implement some method in java, 
      * probably using an external library)
-     * @param context
-     * @param a
-     * @param b
-     * @return
+     * @param context ThreadContext
+     * @param a probably expect RubyFixnum
+     * @param b probably expect RubyFixnum
+     * @return result probably RubyFixnum
      */
     @JRubyMethod(name = "subtract")
     public IRubyObject sub_ruby(ThreadContext context, IRubyObject a, IRubyObject b) {
@@ -66,10 +68,10 @@ public class RubyBar extends RubyObject {
     /**
      * Divide two numbers (in practice you would implement some method in java, 
      * probably using an external library)
-     * @param context
-     * @param a
-     * @param b
-     * @return
+     * @param context ThreadContext
+     * @param a probably expect RubyFixnum
+     * @param b probably expect RubyFixnum
+     * @return result probably RubyFixnum
      */
     @JRubyMethod(name = "divide")
     public IRubyObject div(ThreadContext context, IRubyObject a, IRubyObject b) {
@@ -79,13 +81,17 @@ public class RubyBar extends RubyObject {
     /**
      * Multiplies two numbers (in practice you would implement some method in java, 
      * probably using an external library)
-     * @param context
-     * @param a
-     * @param b
-     * @return
+     * @param context ThreadContext
+     * @param args the ruby way of coping with more than two arguments
+     * @return result probably RubyFixnum
      */
-    @JRubyMethod(name = "multiply")
-    public IRubyObject mult(ThreadContext context, IRubyObject a, IRubyObject b) {
-        return a.callMethod(context, "*", b);
+    @JRubyMethod(name = "multiply", rest = true)
+    public IRubyObject mult(ThreadContext context, IRubyObject[] args) {
+        Ruby runtime = context.getRuntime();
+        // Arity.checkArgumentCount(runtime, args, Arity.OPTIONAL.getValue(), 2);
+        int a = (int) args[0].toJava(Integer.class);
+        int b = (int) args[1].toJava(Integer.class);
+        int result = a * b;
+        return runtime.newFixnum(result);
     }
 }

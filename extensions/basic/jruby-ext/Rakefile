@@ -24,7 +24,7 @@ end
 
 desc 'Test'
 task :test do
-  sh 'jruby ../test/basic_test.rb'
+  sh 'jruby ../test/foo_test.rb'
   sh 'jruby ../test/bar_spec_test.rb'
 end
 

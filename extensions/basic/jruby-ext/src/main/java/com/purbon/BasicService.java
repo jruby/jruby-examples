@@ -14,6 +14,7 @@ import java.io.IOException;
    * object allocator (for java 8 this can be replace by a lambda, but don't do it yet).
    * Your @JRubyMethod(s) become exposed as instance methods on the Ruby module, class 
    * through the call to defineAnnotatedMethods().
+   * See {https://github.com/jruby/jruby/wiki/JRubyMethod_Signatures}
    */
 public class BasicService  implements BasicLibraryService {
    
@@ -22,7 +23,7 @@ public class BasicService  implements BasicLibraryService {
      * invoked when the ruby code does the related require call.
      * @param ruby An instance of the JRuby runtime.
      * @return boolean True if everything was successful, false otherwise.
-     * @throws IOException
+     * @throws IOException is required to match the BasicLibraryService signature
      */   
    
    @Override
