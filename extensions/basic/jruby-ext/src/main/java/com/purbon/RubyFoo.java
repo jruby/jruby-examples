@@ -18,7 +18,7 @@ public class RubyFoo {
      * Example ruby aliases that return a string. This is a kind of pointless
      * method, but is simple to understand. The equivalent in ruby: 
      * module Foo 
-     *   def self.build_string
+     *   def build_string
      *     return 'This is a new String' 
      *   end alias_method :build_string :new_string
      * end

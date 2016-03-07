@@ -2,12 +2,17 @@
 
 This project aims to demo small and easy concepts around jruby extensions, this concepts will be listed as
 
-* Classes and Modules
-* Static methods in both elements
+### Creating Classes and Modules
+
+* For java method signatures, and @JRubyMethod annotations see the [wiki][]
 * Loading the extensions
 * ...
 
-### Polyglot maven build
+### Building the extension using polyglot maven
+
+* For details on compiling the java extensions using [polyglot maven][] see this [guide][]
+
+Or for the impatient
 
 ```bash
 mvn # builds basic.jar
@@ -17,8 +22,6 @@ mvn # builds basic.jar
 mvn javadoc:javadoc # javadoc
 ```
 
-[Polyglot maven][] has to be the way to go (ant was bad enough but maven is bloody diabolical in xml). Polyglot maven is really simple and well thought out (except they don't seem have completely caught up with the _new_ well like since ruby 1.9 hash) but you can use it anyway (and snake case).
-
-
-
-[Polyglot maven]:https://github.com/takari/polyglot-maven
+[polyglot maven]:https://github.com/takari/polyglot-maven
+[wiki]:https://github.com/jruby/jruby/wiki/Method-Signatures-and-Annotations-in-JRuby-extensions
+[guide]:https://github.com/jruby/jruby/wiki/Java-extensions-for-JRuby-using-polyglot-maven
