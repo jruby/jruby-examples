@@ -38,7 +38,7 @@ public class RubyFoo {
      * meta = true is waht makes this module class method
      * The equivalent in ruby: 
      * module Foo 
-     *   def self.bself_string
+     *   def self.self_string
      *     return 'This is String is from Foo.self' 
      *   end
      * end
