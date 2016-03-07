@@ -32,6 +32,27 @@ public class RubyFoo {
         Ruby runtime = context.getRuntime();
         return runtime.newString("This is a new String");
     }
+    
+    /**
+     * This is a kind of pointless module class method, but is simple to understand. 
+     * meta = true is waht makes this module class method
+     * The equivalent in ruby: 
+     * module Foo 
+     *   def self.bself_string
+     *     return 'This is String is from Foo.self' 
+     *   end
+     * end
+     *
+     * @param context ThreadContext
+     * @param recv the receiver
+     * @return A RubyString.
+     */
+    
+    @JRubyMethod(name = "self_string", module = true, meta = true)
+    public static IRubyObject buildSelfString(ThreadContext context, IRubyObject recv) {
+        Ruby runtime = context.getRuntime();
+        return runtime.newString("This is String is from Foo.self");
+    }
 
 
     /**
