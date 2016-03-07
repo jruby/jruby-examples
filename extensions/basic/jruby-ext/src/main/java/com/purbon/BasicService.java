@@ -9,26 +9,36 @@ import org.jruby.runtime.load.BasicLibraryService;
 
 import java.io.IOException;
 
-/**
- * This class is used when to run the instantiation and load
- * of all the related modules and classes defined here.
- * Created by purbon on 24/08/15.
- */
+   /** Initial setup function. Takes a reference to the current JRuby runtime and
+   * sets up our Foo module and Bar class, for the Bar class we create an anonymous
+   * object allocator (for java 8 this can be replace by a lambda, but don't do it yet).
+   * Your @JRubyMethod(s) become exposed as instance methods on the Ruby module, class 
+   * through the call to defineAnnotatedMethods().
+   * See {https://github.com/jruby/jruby/wiki/JRubyMethod_Signatures}
+   */
 public class BasicService  implements BasicLibraryService {
-
-    @Override
+   
+     /**
+     * Basic load method of the BasicLibraryService, this method is 
+     * invoked when the ruby code does the related require call.
+     * @param ruby An instance of the JRuby runtime.
+     * @return boolean True if everything was successful, false otherwise.
+     * @throws IOException is required to match the BasicLibraryService signature
+     */   
+   
+   @Override
     public boolean basicLoad(final Ruby ruby) throws IOException {
 
         RubyModule foo = ruby.defineModule("Foo");
-        foo.defineAnnotatedMethods(Foo.class);
+        foo.defineAnnotatedMethods(RubyFoo.class);
 
         RubyClass bar = ruby.defineClass("Bar", ruby.getObject(), new ObjectAllocator() {
              @Override
              public IRubyObject allocate(Ruby ruby, RubyClass rubyClass) {
-                return new Bar(ruby, rubyClass);
+                return new RubyBar(ruby, rubyClass);
             }
         });
-        bar.defineAnnotatedMethods(Bar.class);
+        bar.defineAnnotatedMethods(RubyBar.class);
 
         return true;
     }
