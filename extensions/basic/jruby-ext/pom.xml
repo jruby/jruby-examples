@@ -11,7 +11,7 @@ DO NOT MODIFIY - GENERATED CODE
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.purbon</groupId>
   <artifactId>jruby-ext</artifactId>
-  <version>1.0</version>
+  <version>1.1</version>
   <name>jruby-ext</name>
   <description>example JRuby extension</description>
   <developers>
@@ -45,7 +45,7 @@ DO NOT MODIFIY - GENERATED CODE
     <dependency>
       <groupId>org.jruby</groupId>
       <artifactId>jruby</artifactId>
-      <version>9.0.5.0</version>
+      <version>9.1.5.0</version>
     </dependency>
   </dependencies>
   <build>
@@ -64,7 +64,7 @@ DO NOT MODIFIY - GENERATED CODE
         </plugin>
         <plugin>
           <artifactId>maven-compiler-plugin</artifactId>
-          <version>3.3</version>
+          <version>3.5.1</version>
           <configuration>
             <source>${maven.compiler.source}</source>
             <target>${maven.compiler.target}</target>
@@ -72,9 +72,9 @@ DO NOT MODIFIY - GENERATED CODE
         </plugin>
         <plugin>
           <artifactId>maven-javadoc-plugin</artifactId>
-          <version>2.10.3</version>
+          <version>2.10.4</version>
           <configuration>
-            <detect_offline_links>false</detect_offline_links>
+            <detectOfflineLinks>false</detectOfflineLinks>
             <links>
               <link>${jruby.api}</link>
             </links>
@@ -82,7 +82,7 @@ DO NOT MODIFIY - GENERATED CODE
         </plugin>
         <plugin>
           <artifactId>maven-jar-plugin</artifactId>
-          <version>2.6</version>
+          <version>3.0.2</version>
           <configuration>
             <archive>
               <manifestFile>MANIFEST.MF</manifestFile>
