@@ -10,8 +10,8 @@ import org.jruby.runtime.load.BasicLibraryService;
 import java.io.IOException;
 
    /** Initial setup function. Takes a reference to the current JRuby runtime and
-   * sets up our Foo module and Bar class, for the Bar class we create an anonymous
-   * object allocator (for java 8 this can be replace by a lambda, but don't do it yet).
+   * sets up our Foo module and Bar class.  Since java 8 we use lambda in place of an
+   * anonymous allocater.
    * Your @JRubyMethod(s) become exposed as instance methods on the Ruby module, class 
    * through the call to defineAnnotatedMethods().
    * See {https://github.com/jruby/jruby/wiki/JRubyMethod_Signatures}
@@ -32,12 +32,7 @@ public class BasicService  implements BasicLibraryService {
         RubyModule foo = ruby.defineModule("Foo");
         foo.defineAnnotatedMethods(RubyFoo.class);
 
-        RubyClass bar = ruby.defineClass("Bar", ruby.getObject(), new ObjectAllocator() {
-             @Override
-             public IRubyObject allocate(Ruby ruby, RubyClass rubyClass) {
-                return new RubyBar(ruby, rubyClass);
-            }
-        });
+        RubyClass bar = ruby.defineClass("Bar", ruby.getObject(), (Ruby ruby1, RubyClass rubyClass) -> new RubyBar(ruby1, rubyClass));
         bar.defineAnnotatedMethods(RubyBar.class);
 
         return true;
