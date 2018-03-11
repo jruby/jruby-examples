@@ -58,19 +58,22 @@ public class RubyFoo {
     /**
      * A ruby method that adds two numbers. In practice we would do some more 
      * complex operation in java possibly using a library method, or a pure java
-     * method of our own creation (possible private).
+     * method of our own creation (possible private). Here we have chosen not to
+     * error when argument length is wrong, just return default `0` for sum.
      * @param context ThreadContext
      * @param recv the receiver
      * @param args array of input arguments
      * @return The outcome of doing a plus b.
      */
     @JRubyMethod(name = "add", module = true, rest = true)
-    public static IRubyObject add(ThreadContext context, IRubyObject recv, IRubyObject[] args) {
+    public static IRubyObject add(ThreadContext context, IRubyObject recv, IRubyObject... args) {
         Ruby runtime = context.getRuntime();
-        // Arity.checkArgumentCount(runtime, args, Arity.OPTIONAL.getValue(), 2);
-        int a = (int) args[0].toJava(Integer.class);
-        int b = (int) args[1].toJava(Integer.class);
-        int result = a + b;
+        int result = 0;
+        if (args.length == 2) {
+            int a = (int) args[0].toJava(Integer.class);
+            int b = (int) args[1].toJava(Integer.class);
+            result = a + b;
+        }
         return runtime.newFixnum(result);
     }
 }
