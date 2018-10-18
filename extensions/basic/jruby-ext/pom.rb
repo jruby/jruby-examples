@@ -1,7 +1,7 @@
 project 'jruby-ext' do
 
   model_version '4.0.0'
-  id 'com.purbon:jruby-ext:1.1'
+  id 'com.purbon:jruby-ext:1.2'
   packaging 'jar'
 
   description 'example JRuby extension'
@@ -21,21 +21,21 @@ project 'jruby-ext' do
   )
 
   properties(
-    'maven.compiler.source' => '1.7',
-    'maven.compiler.target' => '1.7',
+    'maven.compiler.source' => '1.8',
+    'maven.compiler.target' => '1.8',
     'source.directory' => 'src/main/java', # poxy Eclipse folders
     'project.build.sourceEncoding' => 'utf-8',
     'polyglot.dump.pom' => 'pom.xml',
     'jruby.api' => 'http://jruby.org/apidocs/',
   )
 
-  jar 'org.jruby:jruby:9.1.5.0'
+  jar 'org.jruby:jruby:9.2.0.0'
 
   plugin_management do
     plugin :resources, '2.6'
     plugin :dependency, '2.8'
     plugin(
-      :compiler, '3.5.1',
+      :compiler, '3.8.0',
       source: '${maven.compiler.source}',
       target: '${maven.compiler.target}'
     )
