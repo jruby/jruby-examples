@@ -1,7 +1,7 @@
 project 'jruby-ext' do
 
   model_version '4.0.0'
-  id 'com.purbon:jruby-ext:1.2'
+  id 'com.purbon:jruby-ext:1.2.1'
   packaging 'jar'
 
   description 'example JRuby extension'
@@ -29,13 +29,13 @@ project 'jruby-ext' do
     'jruby.api' => 'http://jruby.org/apidocs/',
   )
 
-  jar 'org.jruby:jruby:9.2.0.0'
+  jar 'org.jruby:jruby:9.2.9.0'
 
   plugin_management do
-    plugin :resources, '2.6'
-    plugin :dependency, '2.8'
+    plugin :resources, '3.1.0'
+    plugin :dependency, '3.1.1'
     plugin(
-      :compiler, '3.8.0',
+      :compiler, '3.8.1',
       source: '${maven.compiler.source}',
       target: '${maven.compiler.target}'
     )
@@ -45,7 +45,7 @@ project 'jruby-ext' do
       links: ['${jruby.api}']
     )
     plugin(
-      :jar, '3.0.2',      
+      :jar, '3.1.1',      
       archive: {
         manifestFile: 'MANIFEST.MF' # camel case reqd
       }
