@@ -1,6 +1,6 @@
 # encoding: utf-8
 # frozen_string_literal: true
-require 'java' # we must use jruby runtime
+require 'jruby' # we must use jruby runtime
 
 # load the jar from the local directory
 require_relative 'jruby-ext.jar' 
