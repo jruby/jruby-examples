@@ -1,5 +1,5 @@
 gem 'minitest' # don't use bundled minitest
-require 'java'
+require 'jruby'
 require 'minitest/autorun'
 require 'minitest/pride'
 require_relative '../lib/basic'
