@@ -2,7 +2,7 @@
 <!--
 
 
-DO NOT MODIFIY - GENERATED CODE
+DO NOT MODIFY - GENERATED CODE
 
 
 -->
@@ -11,7 +11,7 @@ DO NOT MODIFIY - GENERATED CODE
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.purbon</groupId>
   <artifactId>jruby-ext</artifactId>
-  <version>1.2.1</version>
+  <version>1.2.2</version>
   <name>jruby-ext</name>
   <description>example JRuby extension</description>
   <developers>
@@ -45,7 +45,7 @@ DO NOT MODIFIY - GENERATED CODE
     <dependency>
       <groupId>org.jruby</groupId>
       <artifactId>jruby</artifactId>
-      <version>9.2.9.0</version>
+      <version>9.2.19.0</version>
     </dependency>
   </dependencies>
   <build>
