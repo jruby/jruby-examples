@@ -26,10 +26,11 @@ project 'jruby-ext' do
     'source.directory' => 'src/main/java', # poxy Eclipse folders
     'project.build.sourceEncoding' => 'utf-8',
     'polyglot.dump.pom' => 'pom.xml',
+    'jruby.version' => '9.3.0.0',
     'jruby.api' => 'http://jruby.org/apidocs/',
   )
 
-  jar 'org.jruby:jruby-base:9.3.0.0'
+  jar 'org.jruby:jruby-base:${jruby.version}'
 
   plugin_management do
     plugin :resources, '3.1.0'
@@ -45,7 +46,7 @@ project 'jruby-ext' do
       links: ['${jruby.api}']
     )
     plugin(
-      :jar, '3.1.1',      
+      :jar, '3.2.0',
       archive: {
         manifestFile: 'MANIFEST.MF' # camel case reqd
       }
