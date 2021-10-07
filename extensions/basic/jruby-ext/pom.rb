@@ -1,7 +1,7 @@
 project 'jruby-ext' do
 
   model_version '4.0.0'
-  id 'com.purbon:jruby-ext:1.2.2'
+  id 'com.purbon:jruby-ext:1.3.0'
   packaging 'jar'
 
   description 'example JRuby extension'
@@ -29,7 +29,7 @@ project 'jruby-ext' do
     'jruby.api' => 'http://jruby.org/apidocs/',
   )
 
-  jar 'org.jruby:jruby:9.2.19.0'
+  jar 'org.jruby:jruby-base:9.3.0.0'
 
   plugin_management do
     plugin :resources, '3.1.0'
